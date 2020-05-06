@@ -1,0 +1,19 @@
+name: 'Bump Version'
+inputs:
+  PATH:  
+    description: 'path of VERSION file'
+    required: true
+    default: './second/VERSION'
+  STEP:  
+    description: 'STEP to contruct VERSION'
+    required: true
+    default: 'patch'
+outputs:
+  value: 
+    description: 'value of new VERSION'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.PATH }}
+    - ${{ inputs.STEP }}
